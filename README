@@ -1,0 +1,16 @@
+README
+===
+
+The "Vote" buttons *haven't* been properly setup.  See this project's
+GitHub Page for a demo.
+
+The images are from
+
+1. http://chrisyuen.com/wp-content/uploads/2014/11/IMG_1588sm_700.jpg
+2. http://www.t-stand.com/image006.jpg
+3. http://www.atlasgraham.com/img/prod/4e32dda32e702.jpg
+
+They are used for demonstrating the responsive framework built using
+[W3CSS].
+
+[W3CSS]: http://www.w3schools.com/w3css/

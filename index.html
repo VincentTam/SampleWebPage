@@ -3,7 +3,7 @@
 <title>W3.CSS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://www.w3schools.com/w3css/w3.css">
+<link rel="stylesheet" href="w3.css">
 <link rel="stylesheet"
 href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style type="text/css" media="all">
@@ -15,14 +15,16 @@ window.onload = function() {
   var candidates = document.getElementsByClassName("candidate");
   for (var i = 0, l = btns.length; i < l; i++) {
     btns[i].onclick = function() {
-      document.getElementById("msg").innerHTML = "You've voted for candidate " + this.id + ".";
+      document.getElementById("msg").innerHTML = "You've voted for candidate " +
+       this.id + ".";
     }
   }
 }
 </script>
 <body class="w3-content">
 <header class="w3-container w3-red w3-card-4">
-  <h1 class="w3-content"><i class="material-icons w3-xxlarge">directions_walk</i>
+  <h1 class="w3-content"><i class="material-icons w3-xxlarge">directions_walk
+  </i>
   President Election</h1>
 </header>
 

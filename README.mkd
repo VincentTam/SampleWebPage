@@ -1,8 +1,8 @@
 README
 ===
 
-The "Vote" buttons *haven't* been properly setup.  See this project's
-GitHub Page for a demo.
+The "Vote" buttons *haven't* been properly setup.  See
+[this project's GitHub Page][demo] for a demo.
 
 The images are from
 
@@ -14,3 +14,4 @@ They are used for demonstrating the responsive framework built using
 [W3CSS].
 
 [W3CSS]: http://www.w3schools.com/w3css/
+[demo]: https://vincenttam.github.io/SampleWebPage

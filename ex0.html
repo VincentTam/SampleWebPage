@@ -10,18 +10,6 @@ href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style type="text/css" media="all">
   img {width:100%;padding:5%;}
 </style>
-<script type="text/javascript">
-window.onload = function() {
-  var btns = document.getElementsByClassName("vote");
-  var candidates = document.getElementsByClassName("candidate");
-  for (var i = 0, l = btns.length; i < l; i++) {
-    btns[i].onclick = function() {
-      document.getElementById("msg").innerHTML = "You've voted for candidate " +
-       this.id + ".";
-    }
-  }
-}
-</script>
 </head>
 <body class="w3-content">
 <header class="w3-container w3-red w3-card-4">

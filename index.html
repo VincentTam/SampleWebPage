@@ -8,54 +8,87 @@
 <link rel="stylesheet"
 href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script>
-var INCREMENT_SIZE = 10;
-function Dog(id, path, height, width, color) {
+function Dog(id, state, width, height, color) {
+  // info about the image files are constant
+  const BLOW_WHISTLE_PATH = "bitzer_whistle.png";
+  const BLOW_WHISTLE_WIDTH = 270;
+  const BLOW_WHISTLE_HEIGHT = 510;
+  const WRITE_PATH = "bitzer_write.png";
+  const WRITE_WIDTH = 350;
+  const WRITE_HEIGHT = 430;
+
+  // field values
   this.id = id;
-  this.path = path;
-  this.height = height;
+  this.state = "BLOW_WHISTLE"; // or "WRITE"
   this.width = width;
+  this.height = height;
   this.color = color;
+
+  // methods
   this.enlarge = function(size) {
     var ratio = this.width/this.height;
     this.height+=size;
+    // keep aspect ratio
     this.width+=size*ratio;
     this.display();
   };
-  this.changeState = function() {
-    if (this.path.match("Bitzer.png")) {
-      this.path = "bitzer_write.png";
-    } else if (this.path.match("bitzer_write.png")) {
-      this.path = "Bitzer.png";
-    }
+
+  this.goWrite = function() {
+    this.state = "WRITE";
+    // compute sizes
+    this.width = this.height/WRITE_HEIGHT*WRITE_WIDTH;
+
     this.display();
   };
+
+  this.blowWhistle = function() {
+    this.state = "BLOW_WHISTLE";
+    // compute sizes
+    this.width = this.height/BLOW_WHISTLE_HEIGHT*BLOW_WHISTLE_WIDTH;
+
+    this.display();
+  };
+
+  this.getImgPath = function() {
+    if(this.state == "BLOW_WHISTLE") {
+      return BLOW_WHISTLE_PATH;
+    } else if (this.state == "WRITE") {
+      return WRITE_PATH;
+    }
+  };
+
   this.display = function() {
     var img = document.getElementById(this.id);
-    img.src = this.path;
+    img.src = this.getImgPath();
     img.height = this.height;
     img.width = this.width;
   };
 }
 
-var bitzer;
 window.onload = function () {
-bitzer = new Dog("bitzer",
-        document.getElementById("bitzer").src,
-        document.getElementById("bitzer").height,
-        document.getElementById("bitzer").width,
-        "yellow");
-};
+  var INCREMENT_SIZE = 10;
+  var bitzer = new Dog("bitzer", "BLOW_WHISTLE", 270, 510, "yellow");
 
-var button1clicked = function () {
-  bitzer.enlarge(INCREMENT_SIZE);
-};
+  var btn1 = document.getElementById("btn1");
+  var btn2 = document.getElementById("btn2");
+  var btn3 = document.getElementById("btn3");
+  var btn4 = document.getElementById("btn4");
 
-var button2clicked = function () {
-  bitzer.enlarge(-INCREMENT_SIZE);
-};
+  btn1.onclick = function () {
+    bitzer.enlarge(INCREMENT_SIZE);
+  };
 
-var button3clicked = function() {
-  bitzer.changeState();
+  btn2.onclick = function () {
+    bitzer.enlarge(-INCREMENT_SIZE);
+  };
+
+  btn3.onclick = function() {
+    bitzer.goWrite();
+  };
+
+  btn4.onclick = function() {
+    bitzer.blowWhistle();
+  };
 };
 </script>
 </head>
@@ -71,19 +104,23 @@ var button3clicked = function() {
 <article class="w3-container">
 <ul class="w3-ul">
 <li>
-<h2>Dog</h2>
-<img id="bitzer" src="Bitzer.png" alt="Bitzer" width ="30%"/>
+<h2>Dog Object</h2>
+<img id="bitzer" src="bitzer_whistle.png" alt="Bitzer" width="270"
+    height="510"/>
 <p>
-<button type="button" onclick="button1clicked()""><i
-class="material-icons w3-xxlarge">add_circle_outline</i></button>
-<button type="button" onclick="button2clicked()"><i
-class="material-icons w3-xxlarge">remove_circle_outline</i></button>
-<button type="button" onclick="button3clicked()"><i
-class="material-icons w3-xxlarge">security</i></button>
+<button type="button" id="btn1""><i class="material-icons
+w3-xxlarge">add_circle_outline</i></button>
+<button type="button" id="btn2"><i class="material-icons
+w3-xxlarge">remove_circle_outline</i></button>
+<button type="button" id="btn3"><i class="material-icons
+w3-xxlarge">create</i></button>
+<button type="button" id="btn4"><i class="material-icons
+w3-xxlarge">security</i></button>
 </p>
 </li>
+
 <li>
-<h2>Sheep</h2>
+<h2>Sheep Object</h2>
 </li>
 </ul>
 <footer class="w3-container w3-red">

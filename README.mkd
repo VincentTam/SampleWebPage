@@ -9,6 +9,8 @@ The images are from
 1. http://chrisyuen.com/wp-content/uploads/2014/11/IMG_1588sm_700.jpg
 2. http://www.t-stand.com/image006.jpg
 3. http://www.atlasgraham.com/img/prod/4e32dda32e702.jpg
+4. http://vignette2.wikia.nocookie.net/shaunthesheep/images/6/64/Bitzer.png/revision/latest?cb=20140817034808
+5. http://d1oklq6066osfz.cloudfront.net/bitzer_0.png
 
 They are used for demonstrating the responsive framework built using
 [W3CSS].

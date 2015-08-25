@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html>
+<head>
 <title>W3.CSS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://www.w3schools.com/w3css/w3.css">
+<link rel="stylesheet" href="w3.css">
 <link rel="stylesheet"
 href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style type="text/css" media="all">
   img {width:100%;padding:5%;}
 </style>
+<script type="text/javascript">
+window.onload = function() {
+  var btns = document.getElementsByClassName("vote");
+  var candidates = document.getElementsByClassName("candidate");
+  for (var i = 0, l = btns.length; i < l; i++) {
+    btns[i].onclick = function() {
+      document.getElementById("msg").innerHTML = "You've voted for candidate " +
+       this.id + ".";
+    }
+  }
+}
+</script>
+</head>
 <body class="w3-content">
 <header class="w3-container w3-red w3-card-4">
-  <h1 class="w3-content"><i class="material-icons w3-xxlarge">directions_walk</i>
-  President Election</h1>
+  <div class="w3-topnav w3-large">
+    <a href="index.html"><i class="material-icons">home</i></a>
+    <a href="index.html">Demo</a>
+    <a href="ex0.html">Exercise</a>
+  </div>
 </header>
 
 <article class="w3-container">
@@ -22,10 +39,10 @@ href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <p>The candidates are chosen by the Nomination Committee.</p>
 <div class="w3-row-padding w3-margin-top w3-margin-bottom">
 
-<div class="w3-third">
+<div class="w3-third candidate">
 <div class="w3-card-2">
 <header class="w3-container w3-red w3-card">
-<h3><i class="material-icons">person</i> Candidate A</h3>
+<h3><i class="material-icons">person</i> Candidate 1</h3>
 </header>
 <img src="autumn_yuen.jpg" alt="autumn yuen" />
 <div class="w3-container">
@@ -39,16 +56,16 @@ href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <td>Autumn</td>
     </tr>
 </table>
-<p><button class="w3-btn w3-red vote">Vote</button></p>
+<p><button id="1" class="w3-btn w3-red vote">Vote</button></p>
 </div>
 
 </div>
 </div>
 
-<div class="w3-third">
+<div class="w3-third candidate">
 <div class="w3-card-2">
 <header class="w3-container w3-red w3-card">
-<h3><i class="material-icons">person</i> Candidate B</h3>
+<h3><i class="material-icons">person</i> Candidate 2</h3>
 </header>
 <img src="tree_gun.jpg" alt="tree gun" />
 <div class="w3-container">
@@ -62,16 +79,16 @@ href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <td>Tree Gun</td>
     </tr>
 </table>
-<p><button class="w3-btn w3-red vote">Vote</button></p>
+<p><button id="2" class="w3-btn w3-red vote">Vote</button></p>
 </div>
 
 </div>
 </div>
 
-<div class="w3-third">
+<div class="w3-third candidate">
 <div class="w3-card-2">
 <header class="w3-container w3-red w3-card">
-<h3><i class="material-icons">person</i> Candidate C</h3>
+<h3><i class="material-icons">person</i> Candidate 3</h3>
 </header>
 <img src="broom_head.jpg" alt="broom head leaf" />
 <div class="w3-container">
@@ -85,7 +102,7 @@ href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <td>Broom Head</td>
     </tr>
 </table>
-<p><button class="w3-btn w3-red vote">Vote</button></p>
+<p><button id="3" class="w3-btn w3-red vote">Vote</button></p>
 </div>
 
 </div>
@@ -97,11 +114,12 @@ href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <li>
 <h2>Procedures</h2>
 
-<p>Click on one of the buttons to vote for your favourite candidate.</p>
+<p id="msg">Click on one of the buttons to vote for your favourite
+candidate.</p>
 </li>
 </ul>
 <footer class="w3-container w3-red">
-    Resize the window to see the effect.
+Resize the window to see the effect.
 </footer>
 </article>
 </body>

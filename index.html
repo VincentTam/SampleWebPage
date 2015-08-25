@@ -65,14 +65,76 @@ function Dog(id, state, width, height, color) {
   };
 }
 
+function Sheep(id, width, height, color, isRunning) {
+  // info about the image files are constant
+  const GD_PATH = "shaun_gd.png";
+  const GD_WIDTH = 120;
+  const GD_HEIGHT = 240;
+  const RUN_PATH = "shaun_run.png";
+  const RUN_WIDTH = 340;
+  const RUN_HEIGHT = 545;
+
+  // field values
+  this.id = id;
+  this.width = width;
+  this.height = height;
+  this.color = color;
+  this.isRunning = isRunning;
+
+  // methods
+  this.enlarge = function(size) {
+    var ratio = this.width/this.height;
+    this.height+=size;
+    // keep aspect ratio
+    this.width+=size*ratio;
+    this.display();
+  };
+
+  this.run = function() {
+    this.isRunning = true;
+    // compute sizes
+    this.width = this.height/RUN_HEIGHT*RUN_WIDTH;
+
+    this.display();
+  };
+
+  this.thumb_up = function() {
+    this.isRunning = false;
+    // compute sizes
+    this.width = this.height/GD_HEIGHT*GD_WIDTH;
+
+    this.display();
+  };
+
+  this.getImgPath = function() {
+    if(this.isRunning) {
+      return RUN_PATH;
+    } else {
+      return GD_PATH;
+    }
+  };
+
+  this.display = function() {
+    var img = document.getElementById(this.id);
+    img.src = this.getImgPath();
+    img.height = this.height;
+    img.width = this.width;
+  };
+}
+
 window.onload = function () {
-  var INCREMENT_SIZE = 10;
+  const INCREMENT_SIZE = 10;
   var bitzer = new Dog("bitzer", "BLOW_WHISTLE", 270, 510, "yellow");
+  var shaun = new Sheep("shaun", 255, 510, false);
 
   var btn1 = document.getElementById("btn1");
   var btn2 = document.getElementById("btn2");
   var btn3 = document.getElementById("btn3");
   var btn4 = document.getElementById("btn4");
+  var btn5 = document.getElementById("btn5");
+  var btn6 = document.getElementById("btn6");
+  var btn7 = document.getElementById("btn7");
+  var btn8 = document.getElementById("btn8");
 
   btn1.onclick = function () {
     bitzer.enlarge(INCREMENT_SIZE);
@@ -89,6 +151,22 @@ window.onload = function () {
   btn4.onclick = function() {
     bitzer.blowWhistle();
   };
+
+  btn5.onclick = function () {
+    shaun.enlarge(INCREMENT_SIZE);
+  };
+
+  btn6.onclick = function () {
+    shaun.enlarge(-INCREMENT_SIZE);
+  };
+
+  btn7.onclick = function () {
+    shaun.run();
+  };
+
+  btn8.onclick = function () {
+    shaun.thumb_up();
+  };
 };
 </script>
 </head>
@@ -102,27 +180,40 @@ window.onload = function () {
 </header>
 
 <article class="w3-container">
-<ul class="w3-ul">
-<li>
-<h2>Dog Object</h2>
-<img id="bitzer" src="bitzer_whistle.png" alt="Bitzer" width="270"
-    height="510"/>
-<p>
-<button type="button" id="btn1""><i class="material-icons
-w3-xxlarge">add_circle_outline</i></button>
-<button type="button" id="btn2"><i class="material-icons
-w3-xxlarge">remove_circle_outline</i></button>
-<button type="button" id="btn3"><i class="material-icons
-w3-xxlarge">create</i></button>
-<button type="button" id="btn4"><i class="material-icons
-w3-xxlarge">security</i></button>
-</p>
-</li>
+  <div class="w3-row">
+    <div class="w3-half">
+      <h2>Dog Object</h2>
+      <img id="bitzer" src="bitzer_whistle.png" alt="Bitzer"
+        width="270" height="510"/>
+      <p>
+      <button type="button" id="btn1"><i class="material-icons
+        w3-xxlarge">zoom_in</i></button>
+      <button type="button" id="btn2"><i class="material-icons
+        w3-xxlarge">zoom_out</i></button>
+      <button type="button" id="btn3"><i class="material-icons
+        w3-xxlarge">create</i></button>
+      <button type="button" id="btn4"><i class="material-icons
+        w3-xxlarge">security</i></button>
+      </p>
+    </div>
 
-<li>
-<h2>Sheep Object</h2>
-</li>
-</ul>
+    <div class="w3-half">
+      <h2>Sheep Object</h2>
+      <img id="shaun" src="shaun_gd.png" alt="Shaun" width="255"
+        height="510"/>
+      <p>
+      <button type="button" id="btn5"><i class="material-icons
+        w3-xxlarge">zoom_in</i></button>
+      <button type="button" id="btn6"><i class="material-icons
+        w3-xxlarge">zoom_out</i></button>
+      <button type="button" id="btn7"><i class="material-icons
+        w3-xxlarge">directions_walk</i></button>
+      <button type="button" id="btn8"><i class="material-icons
+        w3-xxlarge">thumb_up</i></button>
+      </p>
+    </div>
+</div>
+
 <footer class="w3-container w3-red">
 Resize the window to see the effect.
 </footer>

@@ -11,6 +11,8 @@ The images are from
 3. http://www.atlasgraham.com/img/prod/4e32dda32e702.jpg
 4. http://vignette2.wikia.nocookie.net/shaunthesheep/images/6/64/Bitzer.png/revision/latest?cb=20140817034808
 5. http://d1oklq6066osfz.cloudfront.net/bitzer_0.png
+6. http://d1oklq6066osfz.cloudfront.net/shaun-overlay.png
+7. http://shaunthesheep.com/sites/all/themes/shaun_theme/_static/assets/img/char-shaun.png
 
 They are used for demonstrating the responsive framework built using
 [W3CSS].

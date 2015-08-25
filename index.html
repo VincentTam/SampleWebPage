@@ -1,117 +1,89 @@
 <!DOCTYPE html>
 <html>
+<head>
 <title>W3.CSS</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="w3.css">
 <link rel="stylesheet"
 href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<style type="text/css" media="all">
-  img {width:100%;padding:5%;}
-</style>
-<script type="text/javascript">
-window.onload = function() {
-  var btns = document.getElementsByClassName("vote");
-  var candidates = document.getElementsByClassName("candidate");
-  for (var i = 0, l = btns.length; i < l; i++) {
-    btns[i].onclick = function() {
-      document.getElementById("msg").innerHTML = "You've voted for candidate " +
-       this.id + ".";
+<script>
+var INCREMENT_SIZE = 10;
+function Dog(id, path, height, width, color) {
+  this.id = id;
+  this.path = path;
+  this.height = height;
+  this.width = width;
+  this.color = color;
+  this.enlarge = function(size) {
+    var ratio = this.width/this.height;
+    this.height+=size;
+    this.width+=size*ratio;
+    this.display();
+  };
+  this.changeState = function() {
+    if (this.path.match("Bitzer.png")) {
+      this.path = "bitzer_write.png";
+    } else if (this.path.match("bitzer_write.png")) {
+      this.path = "Bitzer.png";
     }
-  }
+    this.display();
+  };
+  this.display = function() {
+    var img = document.getElementById(this.id);
+    img.src = this.path;
+    img.height = this.height;
+    img.width = this.width;
+  };
 }
+
+var bitzer;
+window.onload = function () {
+bitzer = new Dog("bitzer",
+        document.getElementById("bitzer").src,
+        document.getElementById("bitzer").height,
+        document.getElementById("bitzer").width,
+        "yellow");
+};
+
+var button1clicked = function () {
+  bitzer.enlarge(INCREMENT_SIZE);
+};
+
+var button2clicked = function () {
+  bitzer.enlarge(-INCREMENT_SIZE);
+};
+
+var button3clicked = function() {
+  bitzer.changeState();
+};
 </script>
+</head>
 <body class="w3-content">
 <header class="w3-container w3-red w3-card-4">
-  <h1 class="w3-content"><i class="material-icons w3-xxlarge">directions_walk
-  </i>
-  President Election</h1>
+  <div class="w3-topnav w3-large">
+    <a href="index.html"><i class="material-icons">home</i></a>
+    <a href="index.html">Demo</a>
+    <a href="ex0.html">Exercise</a>
+  </div>
 </header>
 
 <article class="w3-container">
 <ul class="w3-ul">
 <li>
-<h2>List of Pre-Selected Candidates</h2>
-<p>The candidates are chosen by the Nomination Committee.</p>
-<div class="w3-row-padding w3-margin-top w3-margin-bottom">
-
-<div class="w3-third candidate">
-<div class="w3-card-2">
-<header class="w3-container w3-red w3-card">
-<h3><i class="material-icons">person</i> Candidate 1</h3>
-</header>
-<img src="autumn_yuen.jpg" alt="autumn yuen" />
-<div class="w3-container">
-<table class="w3-table w3-bordered w3-striped w3-border">
-    <tr>
-        <th>Surname</th>
-        <td>Yuen</td>
-    </tr>
-    <tr>
-        <th>Given name</th>
-        <td>Autumn</td>
-    </tr>
-</table>
-<p><button id="1" class="w3-btn w3-red vote">Vote</button></p>
-</div>
-
-</div>
-</div>
-
-<div class="w3-third candidate">
-<div class="w3-card-2">
-<header class="w3-container w3-red w3-card">
-<h3><i class="material-icons">person</i> Candidate 2</h3>
-</header>
-<img src="tree_gun.jpg" alt="tree gun" />
-<div class="w3-container">
-<table class="w3-table w3-bordered w3-striped w3-border">
-    <tr>
-        <th>Surname</th>
-        <td>Bell</td>
-    </tr>
-    <tr>
-        <th>Given name</th>
-        <td>Tree Gun</td>
-    </tr>
-</table>
-<p><button id="2" class="w3-btn w3-red vote">Vote</button></p>
-</div>
-
-</div>
-</div>
-
-<div class="w3-third candidate">
-<div class="w3-card-2">
-<header class="w3-container w3-red w3-card">
-<h3><i class="material-icons">person</i> Candidate 3</h3>
-</header>
-<img src="broom_head.jpg" alt="broom head leaf" />
-<div class="w3-container">
-<table class="w3-table w3-bordered w3-striped w3-border">
-    <tr>
-        <th>Surname</th>
-        <td>Leaf</td>
-    </tr>
-    <tr>
-        <th>Given name</th>
-        <td>Broom Head</td>
-    </tr>
-</table>
-<p><button id="3" class="w3-btn w3-red vote">Vote</button></p>
-</div>
-
-</div>
-</div>
-
-</div>
+<h2>Dog</h2>
+<img id="bitzer" src="Bitzer.png" alt="Bitzer" width ="30%"/>
+<p>
+<button type="button" onclick="button1clicked()""><i
+class="material-icons w3-xxlarge">add_circle_outline</i></button>
+<button type="button" onclick="button2clicked()"><i
+class="material-icons w3-xxlarge">remove_circle_outline</i></button>
+<button type="button" onclick="button3clicked()"><i
+class="material-icons w3-xxlarge">security</i></button>
+</p>
 </li>
-
 <li>
-<h2>Procedures</h2>
-
-<p id="msg">Click on one of the buttons to vote for your favourite
-candidate.</p>
+<h2>Sheep</h2>
 </li>
 </ul>
 <footer class="w3-container w3-red">

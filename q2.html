@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet"
+href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style type="text/css" media="all">
+  img {width:100%;padding:5%;}
+</style>
+<script src="Robot.js"></script>
+<script>
+window.onload = function () {
+  // myRobot has no favourite food
+  var myRobot = new Robot("Bob", "", "Well, I'm not crashing so often...");
+  myRobot.favouriteFood = "banana"; // Trevor put this line
+
+  // Print the output to <p id="output"></p>
+  document.getElementById("output").innerHTML = myRobot.howDoesItGo;
+};
+</script>
+</head>
+<body class="w3-content">
+<header class="w3-container w3-red w3-card-4">
+  <div class="w3-topnav w3-large">
+    <a href="index.html"><i class="material-icons">home</i></a>
+    <a href="index.html">Demo</a>
+    <a href="ex0.html">Exercise</a>
+    <a href="q2.html">Question 2</a>
+  </div>
+</header>
+
+<article class="w3-container">
+<h1>How do you do, myRobot?</h1>
+<p id="output"></p>
+</article>
+</body>
+</html>

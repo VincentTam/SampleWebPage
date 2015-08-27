@@ -10,16 +10,34 @@ href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <style type="text/css" media="all">
   img {width:100%;padding:5%;}
 </style>
-<script type="text/javascript">
+<script>
+function Candidate(surname, givenName) {
+  this.surname = surname;
+  this.givenName = givenName;
+
+  this.viewPlatform = function() {
+    var output = document.getElementById("msg");
+    output.innerHTML = "Hello, I'm " + this.givenName + " " +
+        this.surname + ".  Please vote for me.";
+  };
+}
+
 window.onload = function() {
-  var btns = document.getElementsByClassName("vote");
-  var candidates = document.getElementsByClassName("candidate");
-  for (var i = 0, l = btns.length; i < l; i++) {
-    btns[i].onclick = function() {
-      document.getElementById("msg").innerHTML = "You've voted for candidate " +
-       this.id + ".";
-    }
-  }
+  var autumn_yuen = new Candidate("Yuen", "Autumn");
+  var tree_gun = new Candidate("Bell", "Tree Gun");
+  var broom_head = new Candidate("Leaf", "Broom Head");
+
+  btn1.onclick = function() {
+    autumn_yuen.viewPlatform();
+  };
+
+  btn2.onclick = function() {
+    tree_gun.viewPlatform();
+  };
+
+  btn3.onclick = function() {
+    broom_head.viewPlatform();
+  };
 }
 </script>
 </head>
@@ -29,6 +47,7 @@ window.onload = function() {
     <a href="index.html"><i class="material-icons">home</i></a>
     <a href="index.html">Demo</a>
     <a href="ex0.html">Exercise</a>
+    <a href="q2.html">Question 2</a>
   </div>
 </header>
 
@@ -36,7 +55,7 @@ window.onload = function() {
 <ul class="w3-ul">
 <li>
 <h2>List of Pre-Selected Candidates</h2>
-<p>The candidates are chosen by the Nomination Committee.</p>
+<p>Hello world!  The candidates are chosen by the Nomination Committee.</p>
 <div class="w3-row-padding w3-margin-top w3-margin-bottom">
 
 <div class="w3-third candidate">
@@ -56,7 +75,7 @@ window.onload = function() {
         <td>Autumn</td>
     </tr>
 </table>
-<p><button id="1" class="w3-btn w3-red vote">Vote</button></p>
+<p><button id="btn1" class="w3-btn w3-red vote">View propaganda</button></p>
 </div>
 
 </div>
@@ -79,7 +98,7 @@ window.onload = function() {
         <td>Tree Gun</td>
     </tr>
 </table>
-<p><button id="2" class="w3-btn w3-red vote">Vote</button></p>
+<p><button id="btn2" class="w3-btn w3-red vote">View propaganda</button></p>
 </div>
 
 </div>
@@ -102,7 +121,7 @@ window.onload = function() {
         <td>Broom Head</td>
     </tr>
 </table>
-<p><button id="3" class="w3-btn w3-red vote">Vote</button></p>
+<p><button id="btn3" class="w3-btn w3-red vote">View propaganda</button></p>
 </div>
 
 </div>
